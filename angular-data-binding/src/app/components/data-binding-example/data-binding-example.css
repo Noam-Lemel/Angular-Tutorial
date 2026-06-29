@@ -1,0 +1,99 @@
+button{
+    display: block;
+    margin: 10px;
+    padding: 5px;
+}
+input{
+    display: block;
+    margin: 10px;
+    padding: 5px;
+}
+/* .square{
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
+} */
+.red-bg{
+    background: red;
+}
+.blue-bg{
+    background: blue;
+}
+.yellow-bg{
+    background: yellow;
+}
+.red-border{
+    border: 1px solid red;
+}
+.red-color{
+    color: red;
+}
+.notice-board{
+    width: 700px;
+    height: 600px;
+    border: 2px solid black;
+    background: brown;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.message{
+    min-width: 100px;
+    height:50px;
+    background: lightgray;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+}
+.board{
+    width: 700px;
+    height: 700px;
+    border: 2px solid brown;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows: repeat(8,1fr);
+}
+.bigBoard{
+    width: 700px;
+    height: 700px;
+    border: 2px solid brown;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr);
+}
+.square{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.piece{
+    height: 70%;
+    width: 70%;
+    border-radius:50%;
+    background: white;
+}
+.black-bg{
+    background: black;
+}
+.white-bg{
+    background: white;
+}
+.full{
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+.hollow{
+    width: 100px;
+    height: 100px;
+    border: 10px solid blue;
+}
+.circle{
+    width: 100px;
+    height: 100px;
+    border: 10px solid yellow;
+    border-radius: 50%;
+}

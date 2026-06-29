@@ -1,0 +1,138 @@
+<!-- String interpolation -->
+<h1>{{returnTitle()}}</h1>
+
+<!-- Input binding -->
+<input type="text" [placeholder]="inputPlaceHolder">
+<button [disabled]="isButtonDisabled">button {{isButtonDisabled?'disabled':'enabled'}}</button>
+
+<!-- Event binding -->
+<button (click)="onClickButtonEnable()">{{isButtonDisabled?'disabled':'enabled'}} top button</button>
+<input type="text" placeholder="Enter title" (input)="onInputInputTitle($event)">
+
+<!-- drill 01: ליצור ריבוע באורך ורוחב 300 פיקסלים, 
+   בתוך הריבוע צריך להיות כתוב המיקום של העכבר בתוך הריבוע-->
+<div class="square" (mousemove)="mouseLocation($event)">{{coords}}</div>
+
+<!-- Tow Way Binding -->
+ <input type="text" placeholder="Change Title" [(ngModel)]="title"/>
+
+ <!-- ngClass -->
+  <button [disabled]="isButtonDisabled" [ngClass]="(isButtonDisabled?'red-bg':'blue-bg')">button</button>
+
+  <button [disabled]="isButtonDisabled" [ngClass]="buttonClasses">button</button>
+
+  <!-- צרו כפתור- לחיצה אחת רקע צהוב לחיצה שניה גבול אדום, לחיצה שלישית טקסט אדום, לחיצה רביעית מאפסת את מצב הכפתור -->
+   <button (click)="onClickButtonDrill()" [ngClass]=" {'yellow-bg':this.clickCount>=1,'red-border':this.clickCount>=2,'red-color':this.clickCount===3}"> click here</button>
+
+   <!-- ngIf -->
+    <div *ngIf="!isButtonDisabled" style="background: green;width:100px;height:100px;"></div>
+    <!-- @if -->
+    @if(!isButtonDisabled){
+     <div style="background: blue;width:100px;height:100px;"></div>}
+
+     <!-- drill: ליצור אינפוט של אימייל מסוג text, 
+      שברגע שמקלידים בו אימייל לא תקין, נוספת פסקה מתחת שמודיעה שהאימייל איננו תקין
+      ומסביב לאינפוט יש מסגרת אדומה -->
+    <input [ngClass]="{'red-border':!isValid}" type="text" name="email" placeholder="email" (input)="checkEmail($event)">
+    <div *ngIf="!isValid">Email not valid</div>
+
+    <!-- ngFor -->
+     <div *ngFor="let person of persons;let i=index">
+        person #{{i+1}}: name: {{person.name}}; age: {{person.age}};
+     </div>
+     <!-- @for -->
+      @for (person of persons; track $index; let i=$index) {
+        <div>
+        person #{{i+1}}: name: {{person.name}}; age: {{person.age}};
+     </div>
+      }
+
+      <!-- drill: צרו לוח מודעות עם input וbutton.
+       ברגע שלוחצים על הכפתור ההודעה מצטרפת ללוח מודעות בצורת רשימה
+       כאשר הלוח ריק יש רשימה שאין הודעות -->
+       <!-- ngIf solution -->
+       <!-- <div class="notice-board">
+       <p *ngFor="let message of messages" class="message">{{message}}</p>
+       <p *ngIf="messages.length===0">please enter new message</p>
+       </div>
+       <form (submit)="inputToMessage($event)">
+        <input type="text" name="new-message"/>
+        <input type="submit" value="submit"/>
+       </form> -->
+
+       <!-- @for solution-->
+        <!-- <div class="notice-board">
+            @for(message of messages;track $index){
+                <div class="message">
+                    <p>{{message}}</p>
+                </div>
+            }
+            @empty {
+                <div>
+                    <p>please enter new message</p>
+                </div>
+            }
+        </div>
+        <form (submit)="inputToMessage($event)">
+        <input type="text" name="new-message"/>
+        <input type="submit" value="submit"/>
+       </form> -->
+       <!-- arie's solution -->
+        <input #message type="text"/>
+        <button (click)="inputToMessage(message)">add message</button>
+        <div class="notice-board">
+       <p *ngFor="let message of messages" class="message">{{message}}</p>
+       <p *ngIf="messages.length===0">please enter new message</p>
+       </div>
+
+       <!-- drill: צרו לוח של דמקה(8*8) באמצעות מערך אחד 
+        כדי לקבוע את צבע המשבצת להשתמש בפונקציה שמודיעה האם המשבצת שחורה או לבנה
+        בנוסף, אם לוחצים על משבצת שחורה, מופיע כלי במשבצת, ואם לוחצים שוב הוא נעלם-->
+        <!-- <div class="board">
+            <div *ngFor="let square of board" [ngClass]="{'square':true,'black-bg':square.isBlack,'white-bg':!square.isBlack}" (click)="addPiece(square)">
+                <div class="piece" *ngIf="square.hasPiece"></div>
+            </div>
+        </div> -->
+
+    <!-- ngSwitch -->
+     <select (change)="onChangeSelect($event)">
+        <option value="full">Full square</option>
+        <option value="hollow">Hollow Square</option>
+        <option value="circle">Circle</option>
+     </select>
+
+     <div [ngSwitch]="selectValue">
+        <div class="full" *ngSwitchCase="'full'"></div>
+        <div class="hollow" *ngSwitchCase="'hollow'"></div>
+        <div class="circle"*ngSwitchCase="'circle'"></div>
+     </div>
+
+     <!-- @switch -->
+      @switch (selectValue) {
+        @case ('full') {
+            <div class="full"></div>
+        }
+        @case ('hollow') {
+            <div class="hollow"></div>
+        }
+        @case ('circle') {
+            <div class="circle"></div>
+        }
+      }
+
+     <!-- drill: צרו לוח של דמקה(8*8) באמצעות מערך אחד 
+        כדי לקבוע את צבע המשבצת להשתמש בפונקציה שמודיעה האם המשבצת שחורה או לבנה
+        בנוסף, אם לוחצים על משבצת שחורה, מופיע כלי במשבצת, ואם לוחצים שוב הוא נעלם
+        באמצעות ngSwitch להחליף בין לוח 8*8 ל10*10 באמצעות selcect 
+        כאשר אנחנו משנים בחירה, המערך שיוצר את הלוח משתנה עפ"י גודל הלוח-->
+
+        <select (change)="onChangeBoardSelect($event)">
+            <option value="64">8*8</option>
+            <option value="100">10*10</option>
+         </select>
+
+         <div [ngClass]="squaresNumber<100?'board':'bigBoard'">
+            <div *ngFor="let square of board" [ngClass]="{'square':true,'black-bg':square.isBlack,'white-bg':!square.isBlack}" (click)="addPiece(square)">
+                <div class="piece" *ngIf="square.hasPiece"></div>
+            </div>
+        </div>
