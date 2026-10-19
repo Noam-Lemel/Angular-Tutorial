@@ -1,0 +1,108 @@
+<!-- String interpolation -->
+<h1>{{retuenTitle()}}</h1>
+
+<!-- Property binding -->
+<input type="text" [placeholder]="inputPlaceHolder">
+<button [disabled]="isButtonDisabled">button {{isButtonDisabled?"disabled":"enabled"}}</button>
+
+<h2 [innerHTML]="title"></h2>
+
+<!-- Event binding -->
+ <button (click)="onClickButtonEnable()">{{isButtonDisabled?'enabled':'disabled'}} top button</button>
+ <input type="text" placeholder="enter title" (input)="onInputTitle($event)"/>
+
+<!-- תרגיל: ליצור ריבוע בגודל 300px
+  ובתוכו מיקום העכבר -->
+  <div class="mouse-div" (mousemove)="onMouseMoveInMouseDiv($event)">{{mouseDivX+' , '+mouseDivY}}</div>
+
+<!-- Tow Way Binding -->
+   <input type="text" placeholder="Change Title" [(ngModel)]="title"/>
+
+<!-- ngClass -->
+    <!-- <button [disabled]="isButtonDisabled" [ngClass]="isButtonDisabled?'red-background':'blue-background'">button {{isButtonDisabled?"disabled":"enabled"}}</button> -->
+    <button [disabled]="isButtonDisabled" [ngClass]="buttonClasses">button {{isButtonDisabled?"disabled":"enabled"}}</button>
+    
+<!-- צרו כפתור בלחיצה הראשונה יש לו רקע צהוב, 
+     בלחיצה שנייה יש לו גבול אדום, ובלחיצה שלישית יש לו טקסט בצבע אדום
+     בלחיצה רביעית מאפסת את מצב הכפתור -->
+     <button  (click)="onClickDrillButton()" [ngClass]="buttonDrillClasses">click me</button>
+
+<!-- ngIf -->
+      <div *ngIf="!isButtonDisabled" style="background: blue; width: 100px; height: 100px;"></div>
+
+      <!-- צרו אינפוט טקסט של אימל,ברגע שמקלידים אימל לא תקין, נוספת פסקה 
+        מתחת שמודיעה שהאימייל לא תקין ומסביב לאינפוט יש מסגרת אדומה. -->
+
+<!-- ngif -->
+    <input type="text" placeholder="enter email" (input)="onInputEmailValidion($event)" [ngClass]="isValidEmail?'':'red-border'">
+    <div *ngIf="!isValidEmail" class="red-text">unvaild email</div>
+
+<!-- @if -->
+    <input type="text" placeholder="enter email" (input)="onInputEmailValidion($event)" [ngClass]="isValidEmail?'':'red-border'">
+    @if (!isValidEmail) {
+         <div class="red-text">unvaild email</div>
+    }
+
+<!-- ngFor -->
+     <div *ngFor="let person of persons; let i=index">
+        person #{{i+1}} name: {{person.name}}; age: {{person.age}};
+     </div>
+<!-- for -->
+     @for (person of persons; track $index; let i=$index){
+        <div>
+        person #{{i+1}}  name: {{person.name}}; age: {{person.age}};
+        </div>}
+
+<!-- ליצור לוח מודעות עם אינפוט וכפתור. כאשר לוחצים על הכפתור הוא מוסיף 
+      את מה שקיים באינפוט לתוך לוח המודעות הקיים. כאשר הלוח ריק יש הודעה שאין הודעות.  -->
+   <div class="board-div">
+    @for (message of messages; track $index) {
+        <div class="message-div">{{message}}</div>
+    }
+    @if(messages.length===0){
+        <div>no messages</div>
+    }
+   </div> 
+   <input type="text" placeholder="enter message" [(ngModel)]="currentMessage">
+   <button (click)="addMessage()">add message</button>
+
+   <select (change)="onChangeSelectDrill($event)">
+        <option value="small">8x8</option>
+        <option value="big">10x10</option>
+    </select>
+    @switch (squaresNumber) {
+        @case (64) {
+            <div class="board-div" >
+            @for (square of squares; track $index; let i=$index){
+                <div class="square" [ngClass]="isSquareBlack(i)?'square_black':'square_white'" (click)="onClickSquare(i)">
+                @if(square.isPieceExist){
+                    <div class="piece"></div>
+                }
+                </div>
+            }
+            </div>
+        }
+        @case (100) {
+            <div class="big-board-div" >
+            @for (square of squares; track $index; let i=$index){
+                <div class="square" [ngClass]="isSquareBlack(i)?'square_black':'square_white'" (click)="onClickSquare(i)">
+                @if(square.isPieceExist){
+                    <div class="piece"></div>
+                }
+                </div>
+            }
+            </div>
+        }
+    }
+
+   <!-- @ngSwitch -->
+    <select (change)="onChangeSelect($event)">
+        <option value="full">full square</option>
+        <option value="hollow">hollow squre</option>
+        <option value="circle">circle</option>
+    </select>
+    @switch(selectValue){
+        @case("full"){<div class="full"></div>}
+        @case("hollow"){<div class="hollow"></div>}
+        @case("circle"){<div class="circle"></div>}
+    }

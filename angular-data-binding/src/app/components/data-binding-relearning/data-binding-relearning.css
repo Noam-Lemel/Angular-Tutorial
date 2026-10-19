@@ -1,0 +1,93 @@
+button{
+    display: block;
+    margin: 10px;
+    padding: 5px;
+}
+input{
+    display: block;
+    margin: 10px;
+    padding: 5px;
+}
+.mouse-div{
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    border: 2px solid black;
+}
+.red-background{
+    background: red;
+}
+.blue-background{
+    background: blue;
+}
+.yellow-background{
+    background: yellow;
+}
+.red-border{
+    border-color: red;
+}
+.red-text{
+    color: red;
+}
+.board-div{
+    box-sizing: border-box;
+    margin: 20px auto;
+    width: 80vh;
+    height: 80vh;
+    outline: 5px solid black;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows:  repeat(8,1fr);
+}
+.big-board-div{
+    box-sizing: border-box;
+    margin: 20px auto;
+    width: 80vh;
+    height: 80vh;
+    outline: 5px solid black;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows:  repeat(10,1fr);
+}
+.message-div{
+    box-sizing: border-box;
+    margin: 5px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    word-break: break-all;
+}
+.square{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.square_black{
+    background: black;
+}
+.square_white{
+    background: white;
+}
+.piece{
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: blue;
+}
+.full{
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+.hollow{
+    width: 100px;
+    height: 100px;
+    border: 10px solid blue;
+}
+.circle{
+    width: 100px;
+    height: 100px;
+    border: 10px solid yellow;
+    border-radius: 50%;
+}
