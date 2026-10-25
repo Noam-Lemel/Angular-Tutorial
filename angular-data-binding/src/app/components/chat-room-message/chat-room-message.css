@@ -1,0 +1,14 @@
+.message{
+    margin: 1rem;
+    background: white;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+    width:80%
+}
+.username{
+    font-weight: 700;
+    margin: 1rem;
+}
+.contant{
+    margin: 1rem;
+}

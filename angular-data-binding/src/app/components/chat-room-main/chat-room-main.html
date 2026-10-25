@@ -1,0 +1,4 @@
+<h3>Chat Room</h3>
+@for (message of messages; track $index) {
+    <app-chat-room-message [message]="message"></app-chat-room-message>
+}
