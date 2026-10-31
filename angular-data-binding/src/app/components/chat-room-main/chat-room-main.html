@@ -1,4 +1,9 @@
-<h3>Chat Room</h3>
-@for (message of messages; track $index) {
-    <app-chat-room-message [message]="message"></app-chat-room-message>
+<div class="container">
+    <div>
+    <h3>Chat Room</h3>
+@for (message of messages; track $index;let i=$index) {
+    <app-chat-room-message (delete_message)="onDeleteMessage(i)" [myUser]="myUser" [message]="message" [myUserId]="myUser.id"></app-chat-room-message>
 }
+    </div>
+    <app-chat-room-send-message (send_message)="onSendMessage($event)" [myUser]="myUser"></app-chat-room-send-message>
+</div>

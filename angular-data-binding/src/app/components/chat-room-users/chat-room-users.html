@@ -1,5 +1,6 @@
 <div>
     <h3>Users</h3>
-    @for (user of users; track $index) {
-    <div class="user">{{user.userName}}</div>}
+    <app-chat-room-users-search (users_to_display)="onUserSearch($event)"></app-chat-room-users-search>
+    @for (user of usersToDisplay; track $index;let i=$index ) {
+    <div class="user" (click)="onUserClick(users[i])">{{user.userName}}</div>}
 </div>

@@ -1,4 +1,7 @@
-<div class="message">
+<div class="message" [ngClass]="messageClass">
     <p class="username">{{message.user.userName}}:</p>
     <p class="contant">{{message.message}}</p>
+    @if(isMyMessage){
+        <button class="delete" (click)="onClick()">x</button>
+    }
 </div>

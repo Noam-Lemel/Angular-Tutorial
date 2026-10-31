@@ -1,4 +1,7 @@
 <div class="chat-room">
-    <app-chat-room-users [users]="users"></app-chat-room-users>
-    <app-chat-room-main [messages]="messages"></app-chat-room-main>
+    <app-chat-room-users (pick_user)="onPickUser($event)" [users]="users"></app-chat-room-users>
+    <app-chat-room-main [myUser]="myUser" [messages]="messages"></app-chat-room-main>
 </div>
+@if(isModalOn){
+    <app-chat-room-personal-message (send_personal_message)="sendPersonalMessage()" [toUser]="toUser"></app-chat-room-personal-message>
+}

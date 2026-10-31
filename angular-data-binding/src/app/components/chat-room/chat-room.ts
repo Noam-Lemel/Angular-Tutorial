@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { ChatRoomUsers } from '../chat-room-users/chat-room-users';
 import { ChatRoomMain } from '../chat-room-main/chat-room-main';
+import { ChatRoomPersonalMessage } from '../chat-room-personal-message/chat-room-personal-message';
 import { User } from '../../models/user.model';
 import { Message } from '../../models/message.modle';
 
 @Component({
   selector: 'app-chat-room',
-  imports: [ChatRoomUsers,ChatRoomMain],
+  imports: [ChatRoomUsers,ChatRoomMain,ChatRoomPersonalMessage],
   templateUrl: './chat-room.html',
   styleUrl: './chat-room.css',
 })
@@ -42,4 +43,13 @@ export class ChatRoom {
       message:'How are you?'
     }
   ];
+  toUser:User={userName:'',id:''};
+  isModalOn=false;
+  onPickUser(user){
+    this.toUser=user;
+    this.isModalOn=true;
+  }
+  sendPersonalMessage(){
+     this.isModalOn=false;
+  }
 }
