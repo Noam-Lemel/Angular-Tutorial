@@ -4,3 +4,6 @@
     @for (user of usersToDisplay; track $index;let i=$index ) {
     <div class="user" (click)="onUserClick(users[i])">{{user.userName}}</div>}
 </div>
+@if(isModalOn){
+    <app-chat-room-personal-message (send_personal_message)="sendPersonalMessage()" [toUser]="toUser"></app-chat-room-personal-message>
+}

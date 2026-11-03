@@ -1,5 +1,8 @@
 <div class="container">
-    <p>to: {{toUser.userName}}</p>
-    <textarea placeholder="write a message"></textarea>
-    <button (click)="onSendClick()">send</button>
+    <div class="private-message">
+        <h4>Private Message</h4>
+    <div class="username">to: {{toUser.userName}}</div>
+    <textarea class="message" rows="5" placeholder="write a message"></textarea>
+    <button class="button-send" (click)="onSendClick()">send</button>
+    </div>
 </div>

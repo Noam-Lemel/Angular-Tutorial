@@ -43,13 +43,4 @@ export class ChatRoom {
       message:'How are you?'
     }
   ];
-  toUser:User={userName:'',id:''};
-  isModalOn=false;
-  onPickUser(user){
-    this.toUser=user;
-    this.isModalOn=true;
-  }
-  sendPersonalMessage(){
-     this.isModalOn=false;
-  }
 }
