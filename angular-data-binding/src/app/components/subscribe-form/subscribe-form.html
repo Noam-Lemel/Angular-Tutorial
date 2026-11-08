@@ -1,0 +1,41 @@
+<!-- <h1>{{inputTitle.value}}</h1>
+<input type="text" [formControl]="inputTitle">
+<button (click)="onClickButtonDefult()">defult</button> -->
+
+<div class="container">
+    <div class="form">
+        <form [formGroup]="subscribeForm" (ngSubmit)="onSubmitSubscribeFrom()">
+            <input class="input-text" type="text" placeholder="First name" formControlName="firstName">
+            @if (firstName.touched && firstName.invalid) 
+            {<div class="invalid-message">{{invalidFirstNameMessage()}}</div>}
+
+            <input class="input-text" type="text" placeholder="Lasr name" formControlName="lastName">
+             @if (lastName.touched && lastName.invalid) 
+            {<div class="invalid-message">You must enter last name</div>}
+
+            <input class="input-text" type="number" placeholder="Age" formControlName="age">
+             @if (age.touched && age.invalid) 
+            {<div class="invalid-message">{{invalidAgeMessage()}}</div>}
+
+            <input class="input-text" type="text" placeholder="Email" formControlName="email">
+             @if (email.touched && email.invalid) 
+            {<div class="invalid-message">You must enter email</div>}
+
+            <input class="input-text" type="password" placeholder="password" formControlName="password">
+             @if (password.touched && password.invalid) 
+            {<div class="invalid-message">{{invalidPasswordMessage()}}</div>}
+
+            <input class="input-text" type="password" placeholder="Repeat on password" formControlName="passwordRepeated">
+             @if (passwordRepeated.touched && (passwordRepeated.invalid || subscribeForm.errors?.['passwordnotrepaeted'])) 
+            {<div class="invalid-message">{{invalidPasswordRepeatedMessage()}}</div>}
+
+            <input class="inline-block" type="checkbox" formControlName="terms">
+            <div class="inline-block">I read the terms</div>
+             @if (terms.touched && terms.errors?.['required']===true) 
+            {<div class="invalid-message">You must confirm the terms</div>}
+
+
+            <button class="button-submit" [disabled]="subscribeForm.invalid">Submit</button>
+        </form>
+    </div>
+</div>

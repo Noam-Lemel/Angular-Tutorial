@@ -7,12 +7,14 @@ import {DataBindingRelearning} from './components/data-binding-relearning/data-b
 import {Header} from './components/header/header';
 import { ChatRoom } from './components/chat-room/chat-room';
 import { Footer } from './components/footer/footer';
+import { NgmodelForm } from './components/ngmodel-form/ngmodel-form';
+import { SubscribeForm } from './components/subscribe-form/subscribe-form';
 
 @Component({
   selector: 'app-root',
   standalone:true,
   imports: [RouterOutlet, FormsModule, NgClass,CommonModule,DataBindingExample,DataBindingRelearning,
-  Header,ChatRoom, Footer],
+  Header,ChatRoom, Footer,NgmodelForm,SubscribeForm],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
