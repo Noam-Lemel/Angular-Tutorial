@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-route3',
@@ -6,4 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './route3.html',
   styleUrl: './route3.css',
 })
-export class Route3 {}
+export class Route3 implements OnInit{
+  id:string|null='';
+  constructor(private route:ActivatedRoute){}
+  ngOnInit(){
+    this.route.paramMap.subscribe(params=>{
+       this.id=params.get('id')});
+   
+  }
+}
