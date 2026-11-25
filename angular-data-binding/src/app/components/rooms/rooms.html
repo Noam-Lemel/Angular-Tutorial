@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="section">
+        <div class="headline">Chose a room</div>
+        @for(name of roomsNames; track $index){
+        <a routerLink="/room/{{name}}">
+            <div class="room">{{name}}</div>
+        </a>
+    }
+    </div>
+    <div class="section">
+        <div class="headline">Create New Room</div>
+        <input type="text" class="input-newroom" [(ngModel)]="inputValue" placeholder="enter room's name">
+        <button class="bouton-newroom" (click)="onClickAddButton()">add new room</button>
+    </div>
+</div>

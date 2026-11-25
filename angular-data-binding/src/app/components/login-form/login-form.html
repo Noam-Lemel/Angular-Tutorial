@@ -1,0 +1,19 @@
+<h3>Login</h3>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginFrom()">
+    <input class="input-text"  type="text" placeholder="User Name" formControlName="userName"
+    [ngClass]="userName.touched && userName.invalid?'input-text_invalid':''">
+    @if (userName.touched && userName.invalid) 
+        {<div class="invalid-message">You must enter Username</div>}
+    <input class="input-text" type="text" placeholder="Email" formControlName="email"
+    [ngClass]="email.touched && email.invalid?'input-text_invalid':''">
+    @if (email.touched && email.invalid) 
+        {<div class="invalid-message">You must enter Email</div>}
+    <input class="input-text" type="password" placeholder="Password" formControlName="password"
+    [ngClass]="password.touched && password.invalid?'input-text_invalid':''">
+    @if (password.touched && password.invalid) 
+        {<div class="invalid-message">You must enter Password</div>}
+    <div class="nav-container">
+        <button type="submit" class="button-submit" [disabled]="loginForm.invalid">submit</button>
+        <a routerLink="/user/subscribe">New User - Subscribe</a>
+    </div>
+</form>

@@ -20,3 +20,6 @@ a{
 .header_nav_home{
     font-weight: 700;
 }
+.link_active{
+    color: yellow;
+}

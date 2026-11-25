@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators  } from '@angular/forms';
 import { ValidationError } from '@angular/forms/signals';
+import { Router, RouterLink } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-subscribe-form',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './subscribe-form.html',
   styleUrl: './subscribe-form.css',
 })
@@ -22,7 +24,7 @@ export class SubscribeForm implements OnInit {
   passwordRepeated!:AbstractControl;
   terms!:AbstractControl;
 
-  constructor(private fb:FormBuilder){}
+  constructor(private fb:FormBuilder, private router:Router, private loginService:LoginService){}
   ngOnInit():void{
     // this.subscribeForm=new FormGroup({
     //   firstName:new FormControl('',[Validators.required,Validators.minLength(4)]),
@@ -66,7 +68,10 @@ export class SubscribeForm implements OnInit {
     return password!==passwordRepaeted?{'passwordnotrepaeted':true}:null;
   }
   onSubmitSubscribeFrom(){
-    console.log(this.subscribeForm.get('lastName')!.value);
+    if(this.subscribeForm.valid)
+      this.loginService.signup(this.firstName.value,this.email.value,this.password.value);
+    // console.log(this.subscribeForm.get('lastName')!.value);
+    // this.router.navigate(['/rooms']);
   }
   invalidFirstNameMessage(){
     const errors=this.firstName.errors;

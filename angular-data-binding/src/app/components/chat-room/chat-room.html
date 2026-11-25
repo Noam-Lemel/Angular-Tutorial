@@ -1,4 +1,9 @@
-<div class="chat-room">
+<!-- <div class="chat-room">
     <app-chat-room-users [users]="users"></app-chat-room-users>
-    <app-chat-room-main [myUser]="myUser" [messages]="messages"></app-chat-room-main>
+    <app-chat-room-main [roomName]="roomName" [myUser]="myUser"
+     [messages]="messages"></app-chat-room-main>
+</div> -->
+<div class="chat-room">
+    <app-chat-room-users></app-chat-room-users>
+    <app-chat-room-main [roomName]="roomName"></app-chat-room-main>
 </div>

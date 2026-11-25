@@ -1,4 +1,4 @@
-:host{
+/* :host{
     display: block;
     width: 100%;
     height: 100vh;
@@ -17,13 +17,16 @@
     border-radius: 5px;
     margin: 2rem;
     padding: 1rem;
-}
+} */
 .input-text{
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #118abd;
     border-radius: 5px;
     margin-top: 1rem;
+}
+.input-text_invalid{
+    border: 1px solid #d90429;
 }
 .inline-block{
     display: inline-block;
@@ -35,13 +38,21 @@
     padding: 0.5rem;
     color: white;
     background: #118abd;
-    margin-top: 1rem;
     border: none;
     border-radius: 5px;
 }
 .button-submit:disabled{
     background: #ccc;
     cursor: not-allowed;
+}
+.nav-container{
+    padding-top: 1rem;
+    display: flex;
+    justify-content:space-between;
+}
+a{
+    font-size: 0.75rem;
+    align-self: flex-end;
 }
 .invalid-message{
     color: #d90429;

@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet,RouterLink } from '@angular/router';
 import {FormsModule, NgForm} from '@angular/forms';
 import { NgClass,CommonModule} from "@angular/common";
 import { DataBindingExample } from './components/data-binding-example/data-binding-example';
@@ -13,7 +13,7 @@ import { SubscribeForm } from './components/subscribe-form/subscribe-form';
 @Component({
   selector: 'app-root',
   standalone:true,
-  imports: [RouterOutlet, FormsModule, NgClass,CommonModule,DataBindingExample,DataBindingRelearning,
+  imports: [RouterOutlet,RouterLink, FormsModule, NgClass,CommonModule,DataBindingExample,DataBindingRelearning,
   Header,ChatRoom, Footer,NgmodelForm,SubscribeForm],
   templateUrl: './app.html',
   styleUrl: './app.css'

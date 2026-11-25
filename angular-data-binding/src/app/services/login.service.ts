@@ -1,0 +1,51 @@
+import { Injectable } from "@angular/core";
+import { User } from "../models/user.model";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { ApiResult } from "../models/apiResult.model";
+import { environment } from "../../environments/environment";
+
+@Injectable({providedIn:'root'})
+export class LoginService{
+    private _myUser:User | null=null;
+    private _token:string='';
+
+    constructor(private http:HttpClient,private router:Router){}
+
+    get myUser(){
+        return this._myUser;
+    }
+    get token(){
+        return this._token;
+    }
+    private setMyUser(userName:string,id:string){
+        this._myUser={userName,id};
+    }
+    signup(userName:string,email:string,password:string){
+        this.http.post<ApiResult>(environment.FIREBASE_SIGNUP,
+            {email,password,returnSecureToken:true}
+        ).subscribe({next:(res)=>{
+            this._token=res.idToken;
+            this.setMyUser(userName,res.localId);
+            this.router.navigate(['/rooms']);
+        },error:(err)=>{
+            console.log(err);
+        }})
+    }
+    signin(userName:string,email:string,password:string){
+        this.http.post<ApiResult>(environment.FIREBASE_SIGNIN,
+            {email,password,returnSecureToken:true}
+        ).subscribe({next:(res)=>{
+            this._token=res.idToken;
+            this.setMyUser(userName,res.localId);
+            this.router.navigate(['/rooms']);
+        },error:(err)=>{
+            console.log(err);
+        }})
+    }
+    logout(){
+        this._token='';
+        this._myUser=null;
+        this.router.navigate(['/home']);
+    }
+}
